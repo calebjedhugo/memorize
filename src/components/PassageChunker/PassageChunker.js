@@ -6,7 +6,7 @@ import PassageContext from '../../contexts/PassageContext';
 
 const Container = styled('div')`
 	display: grid;
-	grid-auto-rows: 398px;
+	grid-auto-rows: 430px;
 	grid-template-columns: 49% 49%;
 	gap: 2%;
 `;
