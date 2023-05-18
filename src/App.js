@@ -1,25 +1,14 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from 'react';
+import DisplaySwitch from './components/DisplaySwitch';
+import PassageContext from './contexts/PassageContext';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+const App = () => {
+	const [passage, setPassage] = useState('');
+	return (
+		<PassageContext.Provider value={[passage, setPassage]}>
+			<DisplaySwitch />
+		</PassageContext.Provider>
+	);
+};
 
 export default App;
