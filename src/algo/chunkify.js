@@ -12,14 +12,20 @@ const chunkify = passage => {
 
 	let currentChunk = '';
 	let charLimit = 700;
-	roughChunks.forEach(chunk => {
+	roughChunks.forEach((chunk, idx) => {
 		if (currentChunk.length + chunk.length < charLimit) {
 			currentChunk += `\n${chunk}`;
+			if (idx === roughChunks.length - 1) {
+				chunks.push(currentChunk);
+			}
 			return;
 		}
-
-		chunks.push(currentChunk);
-		currentChunk = chunk;
+		if (currentChunk) {
+			chunks.push(currentChunk);
+		} else {
+			chunks.push(chunk);
+		}
+		currentChunk = '';
 	});
 
 	return chunks;
