@@ -1,3 +1,15 @@
+const transpositions = { 1: 1, 2: 6, 3: 2, 4: 5, 5: 3, 6: 8, 7: 4, 0: 7 };
+
+const orderChunks = linearChunks => {
+	const sorted = [];
+
+	linearChunks.forEach((chunk, idx) => {
+		sorted[transpositions[(idx + 1) % 8] + Math.floor(idx / 8) * 8 - 1] = { idx, chunk };
+	});
+
+	return sorted;
+};
+
 /**
  *
  * @param {string} passage
@@ -25,10 +37,10 @@ const chunkify = passage => {
 		} else {
 			chunks.push(chunk);
 		}
-		currentChunk = '';
+		currentChunk = chunk;
 	});
 
-	return chunks;
+	return orderChunks(chunks);
 };
 
 export default chunkify;

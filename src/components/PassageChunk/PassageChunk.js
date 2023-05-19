@@ -19,7 +19,7 @@ const PassageChunk = ({ children, order }) => {
 		<Sdiv>
 			<OrderContainer>{order}</OrderContainer>
 			{lines.map(line => (
-				<div>{line}</div>
+				<div key={line}>{line}</div>
 			))}
 		</Sdiv>
 	);

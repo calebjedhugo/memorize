@@ -6,20 +6,21 @@ import PassageContext from '../../contexts/PassageContext';
 
 const Container = styled('div')`
 	display: grid;
-	grid-auto-rows: 430px;
+	grid-auto-rows: 400px;
 	grid-template-columns: 49% 49%;
 	gap: 2%;
 `;
 
+window.obj = {};
 const PassageChunker = () => {
 	const [passage] = useContext(PassageContext);
 
 	const chunks = useMemo(() => chunkify(passage), [passage]);
 	return (
 		<Container>
-			{chunks.map((chunk, idx) => {
+			{chunks.map(({ chunk, idx }) => {
 				return (
-					<PassageChunk key={chunk} order={idx + 1}>
+					<PassageChunk key={idx} order={idx + 1}>
 						{chunk}
 					</PassageChunk>
 				);
