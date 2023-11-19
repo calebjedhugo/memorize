@@ -13,14 +13,23 @@ const gradiantArrayRgb = [...gradiantArrayHex].map((gradiant) =>
 const sortByBrightness = ({ r: r1, g: g1, b: b1 }, { r: r2, g: g2, b: b2 }) =>
   r1 + g1 + b1 - (r2 + g2 + b2);
 
-const sortByColor = (rgOrB) => (rgb1, rgb2) => rgb1[rgOrB] - rgb2[rgOrB];
+const sortBySpread = ({ r: r1, g: g1, b: b1 }, { r: r2, g: g2, b: b2 }) =>
+  Math.max(r1, g1, b1) - Math.min(r1, g1, b1) - (Math.max(r2, g2, b2) - Math.min(r2, g2, b2));
+
+const sortByColor =
+  (rgOrB) =>
+  ([rgb1], [rgb2]) =>
+    rgb1[rgOrB] - rgb2[rgOrB];
 
 const sortedArrays = {
   default: gradiantArrayRgb,
   sourceBrightness: [...gradiantArrayRgb].sort(([color1], [color2]) =>
     sortByBrightness(color1, color2)
   ),
+  sourceSpread: [...gradiantArrayRgb].sort(([color1], [color2]) => sortBySpread(color1, color2)),
   redSource: [...gradiantArrayRgb].sort(sortByColor('r')),
+  greenSource: [...gradiantArrayRgb].sort(sortByColor('g')),
+  blueSource: [...gradiantArrayRgb].sort(sortByColor('b')),
 };
 
 const sortedArrayKeys = Object.keys(sortedArrays);
