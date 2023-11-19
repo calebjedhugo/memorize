@@ -15,7 +15,7 @@ const story = {
     showBlue: true,
     showSource: true,
     showOne: true,
-    showtwo: true,
+    showTwo: true,
   },
   argTypes: { sortedBy: { options: sortedArrayKeys } },
 };
