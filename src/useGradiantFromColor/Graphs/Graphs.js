@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import Gradiants from './Gradiants';
+import Gradiants, { sortedArrayKeys } from './Gradiants';
 import { bool, oneOf } from 'prop-types';
 import { useRef, useState, createContext } from 'react';
 import useAnimationFrame from '../../useAnimationFrame';
@@ -39,7 +39,7 @@ const Graphs = ({
 };
 
 Graphs.propTypes = {
-  sortedBy: oneOf(['default', 'sourceBrightness', 'red1']),
+  sortedBy: oneOf(sortedArrayKeys),
   showRed: bool,
   showGreen: bool,
   showBlue: bool,

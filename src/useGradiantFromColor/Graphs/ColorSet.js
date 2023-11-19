@@ -3,7 +3,6 @@ import Dot from './Dot';
 import { oneOf } from 'prop-types';
 import useGraphsContext from './useGraphsContext';
 import { useMemo } from 'react';
-import { memo } from 'react';
 
 const opacityLevels = [1, 0.75, 0.5];
 

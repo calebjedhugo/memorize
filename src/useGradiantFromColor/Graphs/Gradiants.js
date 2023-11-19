@@ -23,6 +23,8 @@ const sortedArrays = {
   redSource: [...gradiantArrayRgb].sort(sortByColor('r')),
 };
 
+const sortedArrayKeys = Object.keys(sortedArrays);
+
 const GradiantSets = ({ sortedArray = [], increment }) =>
   sortedArray.map((gradiant, idx) => {
     const { r, g, b } = gradiant[0];
@@ -41,4 +43,5 @@ const Gradiants = () => {
   return <GradiantSets sortedArray={sortedArray} increment={increment} />;
 };
 
+export { sortedArrayKeys };
 export default Gradiants;

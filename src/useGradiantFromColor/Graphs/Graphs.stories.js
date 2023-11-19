@@ -1,4 +1,5 @@
 import Graphs from '.';
+import { sortedArrayKeys } from './Gradiants';
 
 const Template = (props) => <Graphs {...props} />;
 
@@ -16,6 +17,7 @@ const story = {
     showOne: true,
     showtwo: false,
   },
+  argTypes: { sortedBy: { options: sortedArrayKeys } },
 };
 
 export { Example };
