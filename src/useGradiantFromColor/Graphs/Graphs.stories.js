@@ -11,11 +11,11 @@ const story = {
   args: {
     sortedBy: 'redSource',
     showRed: true,
-    showGreen: false,
-    showBlue: false,
+    showGreen: true,
+    showBlue: true,
     showSource: true,
     showOne: true,
-    showtwo: false,
+    showtwo: true,
   },
   argTypes: { sortedBy: { options: sortedArrayKeys } },
 };

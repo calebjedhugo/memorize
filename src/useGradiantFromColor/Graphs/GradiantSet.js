@@ -6,7 +6,7 @@ import { useMemo } from 'react';
 const GradiantSet = ({ colors = [], increment = 1, idx }) => {
   const { showSource, showOne, showTwo } = useGraphsContext();
 
-  const x = useMemo(() => increment * idx, [increment, idx]);
+  const x = useMemo(() => Number((increment * idx).toFixed(2)), [increment, idx]);
 
   return colors.map((rgb, level) => {
     if ((level === 0 && showSource) || (level === 1 && showOne) || (level === 2 && showTwo))

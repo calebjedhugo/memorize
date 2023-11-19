@@ -10,11 +10,18 @@ const ColorSet = ({ r, g, b, x, level }) => {
   const { showRed, showGreen, showBlue } = useGraphsContext();
   const opacity = useMemo(() => opacityLevels[level], [level]);
 
+  // Note, we use style for bottom left to avoid too many classnames causing performance issues.
   return (
     <>
-      {showRed && <Dot $color="red" $x={x} $y={r} $opacity={opacity} />}
-      {showGreen && <Dot $color="green" $x={x} $y={g} $opacity={opacity} />}
-      {showBlue && <Dot $color="blue" $x={x} $y={b} $opacity={opacity} />}
+      {showRed && (
+        <Dot style={{ bottom: `${r}px`, left: `${x}px` }} $color="red" $opacity={opacity} />
+      )}
+      {showGreen && (
+        <Dot style={{ bottom: `${g}px`, left: `${x}px` }} $color="green" $opacity={opacity} />
+      )}
+      {showBlue && (
+        <Dot style={{ bottom: `${b}px`, left: `${x}px` }} $color="blue" $opacity={opacity} />
+      )}
     </>
   );
 };
