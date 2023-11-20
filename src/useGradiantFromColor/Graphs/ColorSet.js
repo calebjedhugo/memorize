@@ -6,12 +6,12 @@ import { useMemo } from 'react';
 
 const opacityLevels = [1, 0.75, 0.5];
 
-const ColorSet = ({ r, g, b, x, level }) => {
+const ColorSet = ({ r, g, b, x, level, sourceColor }) => {
   const { showRed, showGreen, showBlue, setDisplayData } = useGraphsContext();
   const opacity = useMemo(() => opacityLevels[level], [level]);
 
   const handleOnClick = () => {
-    setDisplayData(`${r} - ${g} - ${b}`);
+    setDisplayData(`${sourceColor.r} - ${sourceColor.g} - ${sourceColor.b}`);
   };
 
   // Note, we use style for bottom left to avoid too many classnames causing performance issues.

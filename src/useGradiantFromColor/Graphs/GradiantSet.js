@@ -10,7 +10,7 @@ const GradiantSet = ({ colors = [], increment = 1, idx }) => {
 
   return colors.map((rgb, level) => {
     if ((level === 0 && showSource) || (level === 1 && showOne) || (level === 2 && showTwo))
-      return <ColorSet key={level} {...rgb} level={level} x={x} />;
+      return <ColorSet sourceColor={colors[0]} key={level} {...rgb} level={level} x={x} />;
   });
 };
 
