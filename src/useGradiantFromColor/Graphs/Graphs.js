@@ -27,12 +27,25 @@ const Graphs = ({
     if (width !== containerRef.current?.clientWidth) setWidth(containerRef.current?.clientWidth);
   }, []);
 
+  const [displayData, setDisplayData] = useState('');
+
   return (
     <GraphContext.Provider
-      value={{ sortedBy, showRed, showGreen, showBlue, showSource, showOne, showTwo, width }}
+      value={{
+        sortedBy,
+        showRed,
+        showGreen,
+        showBlue,
+        showSource,
+        showOne,
+        showTwo,
+        width,
+        setDisplayData,
+      }}
     >
       <Container ref={containerRef}>
         <Gradiants />
+        <div>{displayData}</div>
       </Container>
     </GraphContext.Provider>
   );

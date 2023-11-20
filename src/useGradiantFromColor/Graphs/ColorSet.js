@@ -7,20 +7,39 @@ import { useMemo } from 'react';
 const opacityLevels = [1, 0.75, 0.5];
 
 const ColorSet = ({ r, g, b, x, level }) => {
-  const { showRed, showGreen, showBlue } = useGraphsContext();
+  const { showRed, showGreen, showBlue, setDisplayData } = useGraphsContext();
   const opacity = useMemo(() => opacityLevels[level], [level]);
+
+  const handleOnClick = () => {
+    setDisplayData(`${r} - ${g} - ${b}`);
+  };
 
   // Note, we use style for bottom left to avoid too many classnames causing performance issues.
   return (
     <>
       {showRed && (
-        <Dot style={{ bottom: `${r}px`, left: `${x}px` }} $color="red" $opacity={opacity} />
+        <Dot
+          onClick={handleOnClick}
+          style={{ bottom: `${r}px`, left: `${x}px` }}
+          $color="red"
+          $opacity={opacity}
+        />
       )}
       {showGreen && (
-        <Dot style={{ bottom: `${g}px`, left: `${x}px` }} $color="green" $opacity={opacity} />
+        <Dot
+          onClick={handleOnClick}
+          style={{ bottom: `${g}px`, left: `${x}px` }}
+          $color="green"
+          $opacity={opacity}
+        />
       )}
       {showBlue && (
-        <Dot style={{ bottom: `${b}px`, left: `${x}px` }} $color="blue" $opacity={opacity} />
+        <Dot
+          onClick={handleOnClick}
+          style={{ bottom: `${b}px`, left: `${x}px` }}
+          $color="blue"
+          $opacity={opacity}
+        />
       )}
     </>
   );
