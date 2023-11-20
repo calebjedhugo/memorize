@@ -12,6 +12,9 @@ const Container = styled('div')`
 `;
 
 const Graphs = ({
+  showZeroRedOnly,
+  showZeroGreenOnly,
+  showZeroBlueOnly,
   sortedBy = 'default',
   showRed,
   showGreen,
@@ -24,7 +27,8 @@ const Graphs = ({
   const [width, setWidth] = useState();
 
   useAnimationFrame(() => {
-    if (width !== containerRef.current?.clientWidth) setWidth(containerRef.current?.clientWidth);
+    if (width !== containerRef.current?.clientWidth)
+      setWidth(containerRef.current?.clientWidth);
   }, []);
 
   const [displayData, setDisplayData] = useState('');
@@ -41,6 +45,9 @@ const Graphs = ({
         showTwo,
         width,
         setDisplayData,
+        showZeroRedOnly,
+        showZeroGreenOnly,
+        showZeroBlueOnly,
       }}
     >
       <Container ref={containerRef}>
@@ -52,6 +59,9 @@ const Graphs = ({
 };
 
 Graphs.propTypes = {
+  showZeroRedOnly: bool,
+  showZeroGreenOnly: bool,
+  showZeroBlueOnly: bool,
   sortedBy: oneOf(sortedArrayKeys),
   showRed: bool,
   showGreen: bool,
